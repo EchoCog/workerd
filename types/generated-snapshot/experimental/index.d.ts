@@ -400,6 +400,7 @@ interface TestController {}
 interface ExecutionContext {
   waitUntil(promise: Promise<any>): void;
   passThroughOnException(): void;
+  props: any;
   abort(reason?: any): void;
 }
 type ExportedHandlerFetchHandler<Env = unknown, CfHostMetadata = unknown> = (
@@ -641,6 +642,7 @@ interface DurableObjectStorage {
   getBookmarkForTime(timestamp: number | Date): Promise<string>;
   onNextSessionRestoreBookmark(bookmark: string): Promise<string>;
   waitForBookmark(bookmark: string): Promise<void>;
+  readonly primary?: DurableObjectStub;
   ensureReplicas(): void;
 }
 interface DurableObjectListOptions {
